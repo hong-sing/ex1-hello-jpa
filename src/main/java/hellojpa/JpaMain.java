@@ -16,10 +16,17 @@ public class JpaMain {
 
         try {
             //저장
-//            Member member = new Member();
-//            member.setId(1L);
-//            member.setName("helloA");
+            //비영속
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("helloA");
+
+            //영속 -> 바로 DB에 쿼리 나가지 않음. 영속성 컨텍스트에 저장이 되는 것
 //            em.persist(member);
+
+            System.out.println("=== BEFORE ===");
+            em.persist(member);
+            System.out.println("=== AFTER ===");
 
             //조회
 //            Member findMember = em.find(Member.class, 2L);
@@ -36,12 +43,12 @@ public class JpaMain {
                     .setMaxResults(8)
                     .getResultList();
 
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+//            for (Member member : result) {
+//                System.out.println("member.name = " + member.getName());
+//            }
 
 
-            tx.commit();
+            tx.commit(); //이때 DB에 쿼리가 나감
         } catch (Exception e) {
             tx.rollback();
         } finally {

@@ -16,13 +16,6 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member(200L, "member200");
-            em.persist(member);
-
-            em.flush();
-
-            System.out.println("================");
-            tx.commit(); //이때 DB에 쿼리가 나감
         } catch (Exception e) {
             tx.rollback();
         } finally {

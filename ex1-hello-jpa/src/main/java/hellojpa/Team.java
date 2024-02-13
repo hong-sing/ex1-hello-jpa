@@ -13,7 +13,8 @@ public class Team {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany
+    @JoinColumn(name = "TEAM_ID") //일대다에서 이것 사용하지 않으면 조인테이블 전략을 사용하게 됨. 그래서 joinColumn을 넣어줘야 함
     private List<Member> members = new ArrayList<>();
 
     public Long getId() {
@@ -40,8 +41,4 @@ public class Team {
         this.members = members;
     }
 
-    public void addMember(Member member) {
-        member.setTeam(this);
-        members.add(member);
-    }
 }

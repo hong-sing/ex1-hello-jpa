@@ -20,6 +20,10 @@ public class Member {
     @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false) //일대다 양방향일 경우. 읽기전용으로 만듦. 스펙 상 공식은 아님 => 그냥 다대일 양방향을 사용하자
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     public Long getId() {
         return id;
     }

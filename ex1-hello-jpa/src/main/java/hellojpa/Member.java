@@ -16,8 +16,8 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false) //일대다 양방향일 경우. 읽기전용으로 만듦. 스펙 상 공식은 아님 => 그냥 다대일 양방향을 사용하자
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
 
